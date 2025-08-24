@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vardaan Maternity & Laparoscopy Hospital - IPD System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="hospital_logo.png" alt="Hospital Logo" class="logo" />
+    <h1>Vardaan Maternity and Laparoscopy Hospital, Sagwara</h1>
+    <h2>IPD Management System</h2>
+  </header>
+
+  <!-- Login Section -->
+  <section id="login-section">
+    <h3>Staff Login</h3>
+    <input type="text" id="username" placeholder="Enter Username" />
+    <input type="password" id="password" placeholder="Enter Secret Key" />
+    <button onclick="login()">Login</button>
+    <p id="login-msg"></p>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashboard" class="hidden">
+    <h3>Welcome, <span id="role"></span></h3>
+    <div class="menu">
+      <button onclick="showSection('admit-section')">Admit Patient</button>
+      <button onclick="showSection('discharge-section')">Discharge Patient</button>
+      <button onclick="showSection('records-section')">View Records</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </section>
+
+  <!-- Admit Section -->
+  <section id="admit-section" class="hidden">
+    <h3>Admit Patient</h3>
+    <form onsubmit="admitPatient(event)">
+      <input type="text" id="patientId" placeholder="Patient ID" required />
+      <input type="text" id="name" placeholder="Name" required />
+      <input type="number" id="age" placeholder="Age" required />
+      <select id="gender">
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      <input type="text" id="ward" placeholder="Ward" required />
+      <input type="text" id="diagnosis" placeholder="Diagnosis" required />
+      <input type="text" id="doctor" placeholder="Doctor" required />
+      <button type="submit">Admit</button>
+    </form>
+    <p id="admit-msg"></p>
+  </section>
+
+  <!-- Discharge Section -->
+  <section id="discharge-section" class="hidden">
+    <h3>Discharge Patient</h3>
+    <form onsubmit="dischargePatient(event)">
+      <input type="text" id="dischargeId" placeholder="Enter Patient ID" required />
+      <input type="number" id="billAmount" placeholder="Bill Amount (₹)" required />
+      <button type="submit">Discharge</button>
+    </form>
+    <div id="bill-output"></div>
+  </section>
+
+  <!-- Records Section -->
+  <section id="records-section" class="hidden">
+    <h3>All IPD Records</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>IPD No</th><th>Patient ID</th><th>Name</th><th>Age</th>
+          <th>Gender</th><th>Ward</th><th>Doctor</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="records-body"></tbody>
+    </table>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
